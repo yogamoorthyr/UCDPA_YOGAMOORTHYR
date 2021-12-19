@@ -17,6 +17,9 @@ import seaborn as sns
 # 2. Importing data
 # ○ Your project should make use of one or more of the following: Relational database, API or web scraping (10)
 # ○ Import a CSV file into a Pandas DataFrame (10)
+covid_data = pd.read_csv(r'C:\Users\Dell\PycharmProjects\pythonProject\UCDPA_YOGA MOORTHY R\covid_19_india.csv')
+covid_vaccine = pd.read_csv(r'C:\Users\Dell\PycharmProjects\pythonProject\UCDPA_YOGA MOORTHY R\covid_vaccine_statewise.csv')
+statewise_testing = pd.read_csv(r'C:\Users\Dell\PycharmProjects\pythonProject\UCDPA_YOGA MOORTHY R\covid_vaccine_statewise.csv')
 
 
 
