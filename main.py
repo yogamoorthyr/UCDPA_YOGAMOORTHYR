@@ -36,7 +36,7 @@ import re
 import pandas as pd
 covid_data = pd.read_csv(r'C:\Users\Dell\PycharmProjects\pythonProject\UCDPA_YOGA MOORTHY R\covid_19_india.csv', index_col=0)
 covid_vaccine = pd.read_csv(r'C:\Users\Dell\PycharmProjects\pythonProject\UCDPA_YOGA MOORTHY R\covid_vaccine_statewise.csv', index_col=0)
-statewise_testing = pd.read_csv(r'C:\Users\Dell\PycharmProjects\pythonProject\UCDPA_YOGA MOORTHY R\covid_vaccine_statewise.csv', index_col=0)
+statewise_testing = pd.read_csv(r'C:\Users\Dell\PycharmProjects\pythonProject\UCDPA_YOGA MOORTHY R\StatewiseTestingDetails.csv', index_col=0)
 
 print (covid_data)
 print (covid_vaccine)
@@ -82,6 +82,7 @@ print (missing_values_count)
 missing_values_count = statewise_testing.isnull().sum()
 print (missing_values_count)
 
+# Blanks & Hyphen thoroughly checked & cleansed in all 3 excel sheets (rought work data in "Run Results" word document)
 
 import pandas as pd
 import numpy as np
@@ -92,14 +93,14 @@ print (covid_data['Cured'])
 
 covid_vaccine = covid_vaccine.replace(to_replace='-', value = 0)
 covid_vaccine.fillna(0, inplace=True)
+covid_vaccine = covid_vaccine.replace(to_replace='NaN', value = 0)
 # To check whether the data was updated or not
 print (covid_vaccine['Sputnik V (Doses Administered)'])
 
 statewise_testing = statewise_testing.replace(to_replace='-', value = 0)
 statewise_testing.fillna(0, inplace=True)
+statewise_testing = statewise_testing.replace(to_replace='NaN', value = 0)
 print (statewise_testing)
-
-# Blanks & Hyphen thoroughly checked & cleansed in all the 3 excel sheets (rought work data in "Run Results" word document)
 
 # ○ Make use of iterators (10)
 # ○ Merge DataFrames (10)
