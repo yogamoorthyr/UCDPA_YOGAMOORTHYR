@@ -92,14 +92,16 @@ covid_data.fillna(0, inplace=True)
 print (covid_data['Cured'])
 
 covid_vaccine = covid_vaccine.replace(to_replace='-', value = 0)
-covid_vaccine.fillna(0, inplace=True)
-covid_vaccine = covid_vaccine.replace(to_replace='NaN', value = 0)
+#covid_vaccine.fillna(0, inplace=True)
+covid_vaccine.replace(np.nan, 0, inplace=True)
+#covid_vaccine = covid_vaccine.replace(to_replace='NaN', value = 0)
 # To check whether the data was updated or not
 print (covid_vaccine['Sputnik V (Doses Administered)'])
 
 statewise_testing = statewise_testing.replace(to_replace='-', value = 0)
-statewise_testing.fillna(0, inplace=True)
-statewise_testing = statewise_testing.replace(to_replace='NaN', value = 0)
+#statewise_testing.fillna(0, inplace=True)
+statewise_testing.replace(np.nan, 0, inplace=True)
+#statewise_testing = statewise_testing.replace(to_replace='NaN', value = 0)
 print (statewise_testing)
 
 # ○ Make use of iterators (10)
