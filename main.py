@@ -26,6 +26,7 @@ import re
 
 # Web Scraping
 # import requests
+# NOTE: The below command works as expected but, has been set to non-execute position as it creates too cluster in results.  Please remove '#' to execute
 # request = requests.get('https://www.kaggle.com/sudalairajkumar/covid19-in-india?select=covid_19_india.csv')
 # print (request.text)
 # print (type(request.text))
@@ -81,10 +82,24 @@ print (missing_values_count)
 missing_values_count = statewise_testing.isnull().sum()
 print (missing_values_count)
 
-# Trigger for 5 rows execution
-# missing_values_count = statewise_testing.isnull().sum()
-# print (missing_values_count[0:5])
 
+import pandas as pd
+import numpy as np
+covid_data = covid_data.replace(to_replace='-', value = 0)
+covid_data.fillna(0, inplace=True)
+# To check whether the data was updated or not
+print (covid_data['Cured'])
+
+covid_vaccine = covid_vaccine.replace(to_replace='-', value = 0)
+covid_vaccine.fillna(0, inplace=True)
+# To check whether the data was updated or not
+print (covid_vaccine['Sputnik V (Doses Administered)'])
+
+statewise_testing = statewise_testing.replace(to_replace='-', value = 0)
+statewise_testing.fillna(0, inplace=True)
+print (statewise_testing)
+
+# Blanks & Hyphen thoroughly checked & cleansed in all the 3 excel sheets (rought work data in "Run Results" word document)
 
 # ○ Make use of iterators (10)
 # ○ Merge DataFrames (10)
