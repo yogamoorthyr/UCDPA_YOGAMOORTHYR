@@ -24,6 +24,15 @@ import re
 # df = pd.read_sql_query ("SELECT -----, ----- FROM ----- INNER JOIN ----- on -----.----- = -----.-----", engine)
 # print (df.head)
 
+# For illustration purpose only (due to data unavailability)
+# calories_data = ut.read_file(src_type='csv', name='calories.csv')
+#     exercise_data = ut.read_file(src_type='csv', name='exercise.csv')
+#
+#     # 2. Read the same files into pandas dataframe from MySQL database
+#     #calories_data = ut.read_file(src_type='db', name='calories')
+#     #exercise_data = ut.read_file(src_type='db', name='exercise')
+
+
 # Web Scraping
 # import requests
 # NOTE: The below command works as expected but, has been set to non-execute position as it creates too cluster in results.  Please remove '#' to execute
@@ -78,6 +87,7 @@ p.split('This... is a test.')
 p2.split('This... is a test.')
 
 
+
 # ○ Replace missing values or drop duplicates (10)
 missing_values_count = covid_data.isnull().sum()
 print (missing_values_count)
@@ -110,12 +120,18 @@ print (statewise_testing)
 
 # ○ Make use of iterators (10)
 # ○ Merge DataFrames (10)
---
+covid_data.rename(columns={'State/UnionTerritory':'State'}, inplace=True)
+# print (covid_data["State"])
+cd_st_data = covid_data.merge(statewise_testing, on = 'State')
+print (cd_st_data.head())
 
 
 # 4. Python
 # ○ Define a custom function to create reusable code (10)
-
+def check_nulls(df):
+    print('Columns containing NULLS are:-')
+    return df.columns[df.isna().any()].tolist()
+check_nulls(covid_data)
 
 # ○ NumPy (10)
 import numpy as np
@@ -138,7 +154,26 @@ print (np_covid_vaccine.shape)
 # ○ Predict a target variable with Supervised or Unsupervised algorithm
 # ○ You are free to choose any algorithm
 # ○ Perform hyper parameter tuning or boosting, whichever is relevant to your model. If it is not relevant, justify that in your report and Python comments
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from xgboost import XGBRegressor
+#X = cd_st_data.drop(columns=['Sno','Time'], axis=1)
+X = cd_st_data['Confirmed']
+#X.drop(columns=['Sno', 'Time'], inplace=True)
+y = cd_st_data['Positive']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2)
+model = XGBRegressor()
+print("Training the XGBRegressor model on the train dataset")
+model.fit(X_train, y_train)
 
+# 13. predicting with the test data
+predict_positivecases = model.predict(X_test)
+print('print the target predicted using test data')
+print(predict_positivecases)
+
+predict_positivecases1 = model.predict(X_test)
+print('print the target predicted using test data')
+print(predict_positivecases1)
 
 
 
