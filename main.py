@@ -149,9 +149,6 @@ print (np_covid_vaccine.shape)
 #print (np_covid_vaccine[0:, 5])
 
 # ○ Dictionary or Lists (10)
-
-
-
 # 5. Machine Learning (60)
 # ○ Predict a target variable with Supervised or Unsupervised algorithm
 # ○ You are free to choose any algorithm
@@ -188,8 +185,23 @@ import matplotlib.pyplot as plt
 
 
 import seaborn as sns
+sns.countplot(cd_st_data['State'])
+plt.show()
+plt.savefig('State.png')
+print('State Chart')
 
+sns.displot(cd_st_data['Confirmed'])
+plt.show()
 
 # 7. Generate valuable insights
 # ○ 5 insights from the project (20)
-# All the States has more or less the same
+# More or less all the States has the same visibility
+
+
+Insights
+#(Point out at least 5 insights in bullet points)
+# All the States has more or less the same with affected individuals
+# Maharashtra, Karnataka, Tamilnadu, Delhi, Uttar Pradesh stands in first 5 positions in No. of Deaths
+# Max number of people vaccinated states stands as Maharashtra, Uttar Pradesh, Gujarat, Rajasthan & West Bengal
+# Suggestion to both Karnataka & Tamilnadu states for more vaccination
+# The promising figures on Cured patients on top 5 states stands as Maharashtra, Karnataka, Kerala, Tamilnadu, Andhra Pradesh which seems to quite extra-ordinary for Andhra Pradesh & Tamilnadu even though their position remains as 9th & 10th towards vaccinated states.
