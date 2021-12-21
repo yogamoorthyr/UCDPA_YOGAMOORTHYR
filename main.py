@@ -71,7 +71,11 @@ print (statewise_testing.describe())
 # 3. Analysing data
 # ○ Your project should use Regex to extract a pattern in data (10)
 import re
-#re.search("Covaxin")
+p = re.compile(r'\W+')
+p2 = re.compile(r'(\W+)')
+p.split('This... is a test.')
+
+p2.split('This... is a test.')
 
 
 # ○ Replace missing values or drop duplicates (10)
