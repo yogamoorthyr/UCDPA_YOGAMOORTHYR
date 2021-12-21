@@ -25,12 +25,14 @@ import re
 # print (df.head)
 
 # For illustration purpose only (due to data unavailability)
-# calories_data = ut.read_file(src_type='csv', name='calories.csv')
-#     exercise_data = ut.read_file(src_type='csv', name='exercise.csv')
-#
-#     # 2. Read the same files into pandas dataframe from MySQL database
-#     #calories_data = ut.read_file(src_type='db', name='calories')
-#     #exercise_data = ut.read_file(src_type='db', name='exercise')
+# Read csv data into pandas dataframes
+# covid_data = ut.read_file(src_type='csv', name=covid_data.csv')
+# covid_vaccine = ut.read_file(src_type='csv', name=covid_vaccine.csv')
+
+# Read the same files into pandas dataframe from MySQL database
+# covid_data = ut.read_file(src_type='db', name='covid_data')
+# covid_vaccine = ut.read_file(src_type='db', name='covid_vaccine')
+
 
 
 # Web Scraping
@@ -165,6 +167,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 model = XGBRegressor()
 print("Training the XGBRegressor model on the train dataset")
 model.fit(X_train, y_train)
+# Note the training exercise was set to 20% on the data provided
 
 # 13. predicting with the test data
 predict_positivecases = model.predict(X_test)
@@ -189,3 +192,4 @@ import seaborn as sns
 
 # 7. Generate valuable insights
 # ○ 5 insights from the project (20)
+# All the States has more or less the same
